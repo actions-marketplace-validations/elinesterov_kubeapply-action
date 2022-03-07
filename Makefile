@@ -1,4 +1,6 @@
-VERSION_REF := v0.0.32
+#VERSION_REF := v0.0.32
+kubeapply_version_ref := VERSION_REF
+VERSION_REF := $(shell cat ${kubeapply_version_ref})
 
 .PHONY: version
 version:

@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install --yes \
     curl \
     wget
 
-#COPY . /go/src/${SRC}
+COPY scripts/entrypoint.sh /entrypoint.sh
 RUN git clone -b ${VERSION_REF} https://${SRC} /go/src/${SRC} 
 RUN cd /usr/local/bin && /go/src/${SRC}/scripts/pull-deps.sh
 
@@ -37,4 +37,7 @@ COPY --from=builder \
     /usr/local/bin/helm \
     /usr/local/bin/kubectl \
     /usr/local/bin/kubeapply \
+    /entrypoint.sh \
     /usr/local/bin/
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

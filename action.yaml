@@ -1,0 +1,14 @@
+name: 'kubeapply-action'
+description: 'Runs kubeapply ihttps://github.com/segmentio/kubeapply'
+branding:
+  icon: 'command'
+  color: 'green'
+inputs:
+  command:
+    description: 'kubeapply command to run'
+    required: true
+runs:
+  using: 'docker'
+  image: 'ghcr.io/elinesterov/kubeapply-action:latest'
+  args:
+    - ${{ inputs.command }}
