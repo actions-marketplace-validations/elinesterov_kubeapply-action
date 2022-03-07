@@ -7,14 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
-  release:
+  test-action:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Testt kubeapply action works
+      - name: Test kubeapply action works
         uses: elinesterov/kubeapply-action@main
         with:
           command: kubeapply expand tests/test-data/clusters/local.yaml
